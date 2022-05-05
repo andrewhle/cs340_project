@@ -1,4 +1,6 @@
 import React from "react";
+import { MdDelete } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
 
 function Course() {
   return (
@@ -19,28 +21,36 @@ function Course() {
             <td>Data</td>
             <td>Data2</td>
             <td>Data3</td>
-            <td>Icon</td>
-            <td>Icon</td>
+            <td>
+              <MdEdit />
+            </td>
+            <td>
+              <MdDelete />
+            </td>
           </tr>
         </tbody>
       </table>
 
-      <div>
-        <h4>Adding Course</h4>
-        <form>
-          <input type="text" placeholder="Enter Course Id"></input>
-          <input type="text" placeholder="Enter Course Name"></input>
-          <input type="number" placeholder="Enter Course Credit"></input>
-          <button>Add</button>
-        </form>
+      <div className="block-container">
+        <div className="block-1">
+          <h4>Adding Course</h4>
+          <form>
+            <input type="text" placeholder="Enter Course Id"></input>
+            <input type="text" placeholder="Enter Course Name"></input>
+            <input type="number" placeholder="Enter Course Credit"></input>
+            <button>Add</button>
+          </form>
+        </div>
 
-        <h4>Search Course</h4>
-        <form>
-          <input type="text" placeholder="Enter Course Id"></input>
-          <input type="text" placeholder="Enter Course Name"></input>
-          <input type="number" placeholder="Enter Course Credit"></input>
-          <button>Search</button>
-        </form>
+        <div className="block-2">
+          <h4>Search Course</h4>
+          <form>
+            <input type="text" placeholder="Enter Course Id"></input>
+            <input type="text" placeholder="Enter Course Name"></input>
+            <input type="number" placeholder="Enter Course Credit"></input>
+            <button>Search</button>
+          </form>
+        </div>
       </div>
     </div>
   );

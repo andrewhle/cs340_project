@@ -1,3 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+form {
+  font-family: "Open Sans Condensed", arial, sans;
+  width: 500px;
+  padding: 30px;
+  margin: 50px auto;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+input {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  background: transparent;
+  margin-bottom: 10px;
+  font: 15px Arial, Helvetica, sans-serif;
+  height: 45px;
+}
+
+::placeholder {
+  color: rgb(255, 255, 255);
+}
+
 .App-header {
   align-items: center;
   text-align: center;
@@ -11,6 +43,30 @@
 
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
+}
+
+p {
+  background: rgb(186, 219, 93);
+  opacity: 0.6;
+  font: 30px Arial, Helvetica, sans-serif;
+}
+
+button {
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+  display: block;
+  width: 150px;
+  height: 29px;
+  border-radius: 18px;
+  background-color: rgb(164, 214, 27);
+  border: solid 1px transparent;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.1s ease-in-;
+  text-decoration: none;
 }
 
 table {
@@ -47,4 +103,38 @@ tbody tr:nth-of-type(even) {
   display: block;
   margin-right: auto;
   height: auto;
+}
+
+.block-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* .block-1,
+.block-2 {
+  display: inline;
+} */
+
+.navbar {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+}
+
+.link {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 29px;
+  border-radius: 18px;
+  background-color: rgb(164, 214, 27);
+  border: solid 1px transparent;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-decoration: inherit;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.1s ease-in-;
 }

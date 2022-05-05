@@ -5,12 +5,29 @@ import { Link } from "react-router-dom";
 function Navigation() {
   return (
     <div>
-      <img className="logo" src={logo2} />
-      <Link to="/course">Course</Link>
-      <Link to="/department">Department</Link>
-      <Link to="/major">Major</Link>
-      <Link to="/student">Student</Link>
-      <Link to="/teacher">Teacher</Link>
+      <nav>
+        <img className="logo" src={logo2} />
+        <ul className="navbar">
+          <Link to="/" className="link">
+            HomePage
+          </Link>
+          <Link to="/course" className="link">
+            Course
+          </Link>
+          <Link to="/department" className="link">
+            Department
+          </Link>
+          <Link to="/major" className="link">
+            Major
+          </Link>
+          <Link to="/student" className="link">
+            Student
+          </Link>
+          <Link to="/teacher" className="link">
+            Teacher
+          </Link>
+        </ul>
+      </nav>
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import { MdDelete } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
 
 function Department() {
   return (
@@ -23,27 +25,41 @@ function Department() {
             <td>Data3</td>
             <td>Data4</td>
             <td>Data5</td>
-            <td>Icon</td>
-            <td>Icon</td>
+            <td>
+              <MdEdit />
+            </td>
+            <td>
+              <MdDelete />
+            </td>
           </tr>
         </tbody>
       </table>
 
-      <h4>Adding Department</h4>
-      <form>
-        <input type="text" placeholder="Enter Course Id"></input>
-        <input type="text" placeholder="Enter Course Name"></input>
-        <input type="number" placeholder="Enter Course Credit"></input>
-        <button>Add</button>
-      </form>
+      <div className="block-container">
+        <div className="block-1">
+          <h4>Adding Department</h4>
+          <form>
+            <input type="text" placeholder="Enter Department Id"></input>
+            <input type="text" placeholder="Enter Employee Id"></input>
+            <input type="text" placeholder="Enter Major Id"></input>
+            <input type="text" placeholder="Enter Department Name"></input>
+            <input type="number" placeholder="Enter Department Credit"></input>
+            <button>Add</button>
+          </form>
+        </div>
 
-      <h4>Search Department</h4>
-      <form>
-        <input type="text" placeholder="Enter Department Id"></input>
-        <input type="text" placeholder="Enter Department Name"></input>
-        <input type="number" placeholder="Enter Course Credit"></input>
-        <button>Search</button>
-      </form>
+        <div className="block-2">
+          <h4>Search Department</h4>
+          <form>
+            <input type="text" placeholder="Enter Department Id"></input>
+            <input type="text" placeholder="Enter Employee Id"></input>
+            <input type="text" placeholder="Enter Major Id"></input>
+            <input type="text" placeholder="Enter Department Name"></input>
+            <input type="number" placeholder="Enter Department Credit"></input>
+            <button>Search</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
