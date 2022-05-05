@@ -15,18 +15,22 @@ import Navigation from "./components/Navigation";
 function App() {
   return (
     <div className="App">
-      <header>
-        <Navigation />
-      </header>
+      <div className="App-header">
+        <header>
+          <Navigation />
+        </header>
 
-      <Routes>
-        <Route path="/" exact element={<HomePage />} />
-        <Route path="/student" element={<Student />} />
-        <Route path="/department" element={<Department />} />
-        <Route path="/course" element={<Course />} />
-        <Route path="/major" element={<Major />} />
-        <Route path="/teacher" element={<Teacher />} />
-      </Routes>
+        <main className="App-body">
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/student" element={<Student />} />
+            <Route path="/department" element={<Department />} />
+            <Route path="/course" element={<Course />} />
+            <Route path="/major" element={<Major />} />
+            <Route path="/teacher" element={<Teacher />} />
+          </Routes>
+        </main>
+      </div>
     </div>
   );
 }

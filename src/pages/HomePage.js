@@ -3,7 +3,8 @@ import React from "react";
 function HomePage() {
   return (
     <div>
-      <h1>Welcome to Gravity Fall University Database Management System</h1>
+      <h3>Gravity Fall University Database Management System</h3>
+      <h4>Introduction </h4>
     </div>
   );
 }
