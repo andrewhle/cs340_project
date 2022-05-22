@@ -1,8 +1,19 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
+import { useState, useEffect } from "react";
 
 function Student() {
+  const [student, setStudent] = useState([]);
+
+  const loadStudent = function () {
+    fetch(`/student`)
+      .then(res => res.json())
+      .then(data => setStudent(data));
+  };
+
+  useEffect(() => loadStudent(), []);
+
   return (
     <div>
       <h2>Student Page</h2>
@@ -12,22 +23,26 @@ function Student() {
             <th>Student id</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Email</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Data</td>
-            <td>Data2</td>
-            <td>Data3</td>
-            <td>
-              <MdEdit />
-            </td>
-            <td>
-              <MdDelete />
-            </td>
-          </tr>
+          {student.map(student => (
+            <tr key={student.student_id}>
+              <td>{student.dept_id}</td>
+              <td>{student.first_name}</td>
+              <td>{student.last_name}</td>
+              <td>{student.email}</td>
+              <td>
+                <MdEdit />
+              </td>
+              <td>
+                <MdDelete />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
 

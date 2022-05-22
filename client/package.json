@@ -1,6 +1,7 @@
 {
   "name": "cs340_project",
   "homepage": "https://web.engr.oregonstate.edu/~lehung/cs340_projectt/",
+  "proxy": "http://localhost:3000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
