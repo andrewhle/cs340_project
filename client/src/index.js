@@ -8,15 +8,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import url from "url";
 import pkg from "../package.json";
 
-const siteURL = pkg.homepage;
-const basename = siteURL ? url.parse(siteURL).pathname : "";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router basename={basename}>
-      <App />
-    </Router>
+    <App />
   </React.StrictMode>
 );
 

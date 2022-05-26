@@ -33,7 +33,7 @@ input {
 .App-header {
   align-items: center;
   text-align: center;
-  background-image: url("./images/database.png");
+  background-image: url("https://onlyvectorbackgrounds.com/wp-content/uploads/2019/03/Gradient-Abstract-Shapes-Background-Purple.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -103,17 +103,13 @@ tbody tr:nth-of-type(even) {
   display: block;
   margin-right: auto;
   height: auto;
+  background: transparent;
 }
 
 .block-container {
   display: flex;
   justify-content: center;
 }
-
-/* .block-1,
-.block-2 {
-  display: inline;
-} */
 
 .navbar {
   display: flex;

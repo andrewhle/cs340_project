@@ -1,0 +1,6 @@
+nvm install NEW_VERSION
+// install newer version of node
+
+lehung@flipN.engr.oregonstate.edu
+//to access certain flip# 
+

@@ -1,8 +1,26 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
+import { useState, useEffect } from "react";
+import AddCourse from "../components/AddCourse";
 
 function Course() {
+  const [course, setCourse] = useState([]);
+
+  const loadCourse = function () {
+    fetch(`/course`)
+      .then(res => res.json())
+      .then(data => setCourse(data));
+  };
+
+  const handleAddCourse = course => {
+    //read up about concat() in JS
+    //concar merge 2 array together and return a new array contain both array
+    setCourse(prevState => prevState.concat(course));
+  };
+
+  useEffect(() => loadCourse(), []);
+
   return (
     <div>
       <h2>Course Page</h2>
@@ -10,6 +28,7 @@ function Course() {
         <thead>
           <tr>
             <th>Course id</th>
+            <th>Department id</th>
             <th>Course Name</th>
             <th>Course Credit</th>
             <th>Edit</th>
@@ -17,41 +36,23 @@ function Course() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Data</td>
-            <td>Data2</td>
-            <td>Data3</td>
-            <td>
-              <MdEdit />
-            </td>
-            <td>
-              <MdDelete />
-            </td>
-          </tr>
+          {course.map(course => (
+            <tr key={course.course_id}>
+              <td>{course.course_id}</td>
+              <td>{course.dept_id}</td>
+              <td>{course.course_name}</td>
+              <td>{course.course_credit}</td>
+              <td>
+                <MdEdit />
+              </td>
+              <td>
+                <MdDelete />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-
-      <div className="block-container">
-        <div className="block-1">
-          <h4>Adding Course</h4>
-          <form>
-            <input type="text" placeholder="Enter Course Id"></input>
-            <input type="text" placeholder="Enter Course Name"></input>
-            <input type="number" placeholder="Enter Course Credit"></input>
-            <button>Add</button>
-          </form>
-        </div>
-
-        <div className="block-2">
-          <h4>Search Course</h4>
-          <form>
-            <input type="text" placeholder="Enter Course Id"></input>
-            <input type="text" placeholder="Enter Course Name"></input>
-            <input type="number" placeholder="Enter Course Credit"></input>
-            <button>Search</button>
-          </form>
-        </div>
-      </div>
+      <AddCourse handleAddCourse={handleAddCourse} />
     </div>
   );
 }

@@ -1,1 +1,14 @@
-GET http://localhost:3000/student
+
+### Retrieve Data
+### NOTE: replace end point with department, course, student, major, teacher
+GET http://localhost:3000/course
+
+### Posting Data
+POST http://localhost:3000/course HTTP/1.1
+Content-Type: application/json
+
+{
+    "dept_id": 4,
+    "course_name": "testing course2",
+    "course_credit": 4
+}

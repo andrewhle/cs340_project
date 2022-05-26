@@ -14,13 +14,10 @@ import Navigation from "./components/Navigation";
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-header">
-        <header>
+    <div className="App-header">
+      <main className="App-body">
+        <Router>
           <Navigation />
-        </header>
-
-        <main className="App-body">
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route path="/student" element={<Student />} />
@@ -29,8 +26,8 @@ function App() {
             <Route path="/major" element={<Major />} />
             <Route path="/teacher" element={<Teacher />} />
           </Routes>
-        </main>
-      </div>
+        </Router>
+      </main>
     </div>
   );
 }

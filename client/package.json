@@ -1,6 +1,5 @@
 {
   "name": "cs340_project",
-  "homepage": "https://web.engr.oregonstate.edu/~lehung/cs340_projectt/",
   "proxy": "http://localhost:3000",
   "version": "0.1.0",
   "private": true,
@@ -18,7 +17,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "deploy": "npm run build && scp -r ./build/* lehung@flip.engr.oregonstate.edu:public_html/cs340_projectt/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

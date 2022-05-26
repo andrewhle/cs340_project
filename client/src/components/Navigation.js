@@ -1,5 +1,5 @@
 import React from "react";
-import logo2 from "../images/dipper.png";
+import logo2 from "../images/logo5.avif";
 import { Link } from "react-router-dom";
 
 function Navigation() {

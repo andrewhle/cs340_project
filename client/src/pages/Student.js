@@ -21,6 +21,7 @@ function Student() {
         <thead>
           <tr>
             <th>Student id</th>
+            <th>Deparment id</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
@@ -31,6 +32,7 @@ function Student() {
         <tbody>
           {student.map(student => (
             <tr key={student.student_id}>
+              <td>{student.student_id}</td>
               <td>{student.dept_id}</td>
               <td>{student.first_name}</td>
               <td>{student.last_name}</td>
