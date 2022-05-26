@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const pool = mysql.createConnection({
   host: "classmysql.engr.oregonstate.edu",
   user: "cs340_lehung",
-  password: "933956527",
+  password: "*********",
   database: "cs340_lehung",
 });
 
