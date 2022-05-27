@@ -28,7 +28,6 @@ function Course() {
         <thead>
           <tr>
             <th>Course id</th>
-            <th>Department id</th>
             <th>Course Name</th>
             <th>Course Credit</th>
             <th>Edit</th>
@@ -39,7 +38,6 @@ function Course() {
           {course.map(course => (
             <tr key={course.course_id}>
               <td>{course.course_id}</td>
-              <td>{course.dept_id}</td>
               <td>{course.course_name}</td>
               <td>{course.course_credit}</td>
               <td>

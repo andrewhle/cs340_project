@@ -10,6 +10,7 @@ import Course from "./pages/Course";
 import Department from "./pages/Department";
 import Major from "./pages/Major";
 import Teacher from "./pages/Teacher";
+import CourseStudent from "./pages/CourseStudent";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -20,9 +21,10 @@ function App() {
           <Navigation />
           <Routes>
             <Route exact path="/" element={<HomePage />} />
-            <Route path="/student" element={<Student />} />
-            <Route path="/department" element={<Department />} />
             <Route path="/course" element={<Course />} />
+            <Route path="/student" element={<Student />} />
+            <Route path="/course_student" element={<CourseStudent />} />
+            <Route path="/department" element={<Department />} />
             <Route path="/major" element={<Major />} />
             <Route path="/teacher" element={<Teacher />} />
           </Routes>

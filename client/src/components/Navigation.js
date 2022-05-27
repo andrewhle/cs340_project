@@ -14,14 +14,17 @@ function Navigation() {
           <Link to="/course" className="link">
             Course
           </Link>
+          <Link to="/student" className="link">
+            Student
+          </Link>
+          <Link to="/course_student" className="link">
+            Crse_Stdn
+          </Link>
           <Link to="/department" className="link">
             Department
           </Link>
           <Link to="/major" className="link">
             Major
-          </Link>
-          <Link to="/student" className="link">
-            Student
           </Link>
           <Link to="/teacher" className="link">
             Teacher

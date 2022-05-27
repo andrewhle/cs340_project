@@ -1,12 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 function AddCourse({ handleAddCourse }) {
   //formData is an object with propeties being deptId, courseName, courseCredit
   //const formData = {deptId: '', courseName: "", courseCredit: "",}
   const [formData, setFormData] = useState({
-    deptId: "",
     courseName: "",
     courseCredit: "",
   });
@@ -48,13 +46,6 @@ function AddCourse({ handleAddCourse }) {
       <div className="block-1">
         <h4>Adding Course</h4>
         <form onSubmit={insertCourse}>
-          <input
-            type="text"
-            name="deptId"
-            placeholder="Enter Department Id"
-            value={formData.deptId} //access object prop
-            onChange={handleChange}
-          ></input>
           <input
             type="text"
             placeholder="Enter Course Name"

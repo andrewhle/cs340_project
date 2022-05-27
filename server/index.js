@@ -34,17 +34,16 @@ app.use(
   })
 );
 
+//---------------------------------------COURSE------------------------
 app.post("/course", (req, res) => {
-  const dept_id = req.body.deptId;
   const course_name = req.body.courseName;
   const course_credit = req.body.courseCredit;
 
-  const sql = `INSERT INTO course (dept_id, course_name, course_credit) values (${dept_id}, "${course_name}", ${course_credit});`;
+  const sql = `INSERT INTO course (course_name, course_credit) values ("${course_name}", ${course_credit});`;
   pool.query(sql, (err, result) => {
     if (!err) {
       res.status(201).json({
         course_id: result.insertId,
-        dept_id,
         course_name,
         course_credit,
       });
@@ -65,6 +64,8 @@ app.get("/course", (req, res) => {
     }
   });
 });
+
+//------------------------------STUDENT---------------------------------
 
 app.get("/student", (req, res) => {
   pool.query("SELECT * FROM student;", (err, rows, field) => {
