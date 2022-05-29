@@ -13,7 +13,7 @@ const pool = mysql.createConnection({
   database: "cs340_lehung",
 });
 
-pool.connect(err => {
+pool.connect((err) => {
   if (!err) {
     console.log("Connect with mysql");
   } else {
@@ -48,7 +48,7 @@ app.post("/course", (req, res) => {
         course_credit,
       });
     } else {
-      res.send({ Success: false, message: "Failed to create course" });
+      res.send({ Success: false, message: "Failed to create course request" });
     }
   });
 });
@@ -66,6 +66,30 @@ app.get("/course", (req, res) => {
 });
 
 //------------------------------STUDENT---------------------------------
+
+app.post("/student", (req, res) => {
+  const dept_id = req.body.deptId;
+  const first_name = req.body.firstName;
+  const last_name = req.body.lastName;
+  const email = req.body.email;
+  const date_of_birth = req.body.dateOfBirth;
+
+  const sql = `INSERT INTO student (dept_id, first_name, last_name, email, date_of_birth) values (${dept_id}, "${first_name}", "${last_name}", "${email}", "${date_of_birth}");`;
+  pool.query(sql, (err, result) => {
+    if (!err) {
+      res.status(201).json({
+        student_id: result.insertId,
+        dept_id,
+        first_name,
+        last_name,
+        email,
+        date_of_birth,
+      });
+    } else {
+      res.send({ Success: false, message: "Failed to create student request" });
+    }
+  });
+});
 
 app.get("/student", (req, res) => {
   pool.query("SELECT * FROM student;", (err, rows, field) => {

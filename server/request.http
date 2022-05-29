@@ -8,7 +8,18 @@ POST http://localhost:3000/course HTTP/1.1
 Content-Type: application/json
 
 {
-    "dept_id": 4,
-    "course_name": "testing course2",
-    "course_credit": 4
+    "courseName": "testing course2",
+    "courseCredit": 4
+}
+
+### Posting Student 
+POST http://localhost:3000/student HTTP/1.1
+Content-Type: application/json
+
+{
+    "deptId": 7,
+    "firstName": "Testing",
+    "lastName": "Tesing",
+    "email": "testing@example.com",
+    "dateOfBirth": "2001-09-20"
 }

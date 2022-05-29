@@ -9,15 +9,15 @@ function AddCourse({ handleAddCourse }) {
     courseCredit: "",
   });
 
-  const handleChange = event => {
-    setFormData(prevState => ({
+  const handleChange = (event) => {
+    setFormData((prevState) => ({
       ...prevState,
       //object format => [key]: value
       [event.target.name]: event.target.value,
     }));
   };
 
-  const insertCourse = async event => {
+  const insertCourse = async (event) => {
     event.preventDefault();
     //formData is an object
     const newCourse = formData;
@@ -42,37 +42,25 @@ function AddCourse({ handleAddCourse }) {
   };
 
   return (
-    <div className="block-container">
-      <div className="block-1">
-        <h4>Adding Course</h4>
-        <form onSubmit={insertCourse}>
-          <input
-            type="text"
-            placeholder="Enter Course Name"
-            name="courseName"
-            value={formData.courseName}
-            onChange={handleChange}
-          ></input>
-          <input
-            type="number"
-            name="courseCredit"
-            placeholder="Enter Course Credit"
-            value={formData.courseCredit}
-            onChange={handleChange}
-          ></input>
-          <button type="submit">Add</button>
-        </form>
-      </div>
-
-      <div className="block-2">
-        <h4>Search Course</h4>
-        <form>
-          <input type="text" placeholder="Enter Course Id"></input>
-          <input type="text" placeholder="Enter Course Name"></input>
-          <input type="number" placeholder="Enter Course Credit"></input>
-          <button>Search</button>
-        </form>
-      </div>
+    <div className="block-1">
+      <h4>Adding Course</h4>
+      <form onSubmit={insertCourse}>
+        <input
+          type="text"
+          placeholder="Enter Course Name"
+          name="courseName"
+          value={formData.courseName}
+          onChange={handleChange}
+        ></input>
+        <input
+          type="number"
+          name="courseCredit"
+          placeholder="Enter Course Credit"
+          value={formData.courseCredit}
+          onChange={handleChange}
+        ></input>
+        <button type="submit">Add</button>
+      </form>
     </div>
   );
 }
