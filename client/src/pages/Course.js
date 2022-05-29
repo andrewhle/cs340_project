@@ -10,14 +10,14 @@ function Course() {
 
   const loadCourse = function () {
     fetch(`/course`)
-      .then((res) => res.json())
-      .then((data) => setCourse(data));
+      .then(res => res.json())
+      .then(data => setCourse(data));
   };
 
-  const handleAddCourse = (course) => {
+  const handleAddCourse = course => {
     //read up about concat() in JS
     //concar merge 2 array together and return a new array contain both array
-    setCourse((prevState) => prevState.concat(course));
+    setCourse(prevState => prevState.concat(course));
   };
 
   useEffect(() => loadCourse(), []);
@@ -36,7 +36,7 @@ function Course() {
           </tr>
         </thead>
         <tbody>
-          {course.map((course) => (
+          {course.map(course => (
             <tr key={course.course_id}>
               <td>{course.course_id}</td>
               <td>{course.course_name}</td>

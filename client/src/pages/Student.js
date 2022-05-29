@@ -10,14 +10,14 @@ function Student() {
 
   const loadStudent = function () {
     fetch(`/student`)
-      .then((res) => res.json())
-      .then((data) => setStudent(data));
+      .then(res => res.json())
+      .then(data => setStudent(data));
   };
 
-  const handleAddStudent = (student) => {
+  const handleAddStudent = student => {
     //read up about concat() in JS
     //concar merge 2 array together and return a new array contain both array
-    setStudent((prevState) => prevState.concat(student));
+    setStudent(prevState => prevState.concat(student));
   };
 
   useEffect(() => loadStudent(), []);
@@ -39,7 +39,7 @@ function Student() {
           </tr>
         </thead>
         <tbody>
-          {student.map((student) => (
+          {student.map(student => (
             <tr key={student.student_id}>
               <td>{student.student_id}</td>
               <td>{student.dept_id}</td>

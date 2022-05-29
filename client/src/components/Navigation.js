@@ -18,7 +18,7 @@ function Navigation() {
             Student
           </Link>
           <Link to="/course_student" className="link">
-            Crse_Stdn
+            Course_Student
           </Link>
           <Link to="/department" className="link">
             Department

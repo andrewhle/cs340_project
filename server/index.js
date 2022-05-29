@@ -3,6 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const PORT = 3000;
 
 //--------------------------DATA BASE CONNECTION------------------------------
 
@@ -13,9 +14,9 @@ const pool = mysql.createConnection({
   database: "cs340_lehung",
 });
 
-pool.connect((err) => {
+pool.connect(err => {
   if (!err) {
-    console.log("Connect with mysql");
+    console.log("Successfully connect to mysql");
   } else {
     console.log("Failed to connect to mysql");
   }
@@ -27,12 +28,9 @@ pool.connect((err) => {
 
 //---------------------------------------------
 
+app.use(cors());
+app.options("*", cors());
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:8000",
-  })
-);
 
 //---------------------------------------COURSE------------------------
 app.post("/course", (req, res) => {
@@ -60,10 +58,12 @@ app.get("/course", (req, res) => {
     if (!err) {
       res.json(result);
     } else {
-      req.send({ Success: false, message: "Failed to retrieve course" });
+      res.send({ Success: false, message: "Failed to retrieve course" });
     }
   });
 });
+
+app.delete("/course/:course_id", (req, res) => {});
 
 //------------------------------STUDENT---------------------------------
 
@@ -101,4 +101,54 @@ app.get("/student", (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log("Server listen to port 3000"));
+//----------------------------COURSE_STUDENT-------------------------
+
+app.get("/course_student", (req, res) => {
+  pool.query("SELECT * FROM course_student;", (err, rows, field) => {
+    if (!err) {
+      res.send(JSON.stringify(rows));
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+//--------------------------DEPARTMENT-------------------------------
+
+app.get("/department", (req, res) => {
+  pool.query("SELECT * FROM department;", (err, rows, field) => {
+    if (!err) {
+      res.send(JSON.stringify(rows));
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+//----------------------------MAJOR----------------------------------
+
+app.get("/major", (req, res) => {
+  pool.query("SELECT * FROM major;", (err, rows, field) => {
+    if (!err) {
+      res.send(JSON.stringify(rows));
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+//-----------------------------TEACHER-------------------------------
+
+app.get("/teacher", (req, res) => {
+  pool.query("SELECT * FROM teacher;", (err, rows, field) => {
+    if (!err) {
+      res.send(JSON.stringify(rows));
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+app.listen(process.env.PORT || PORT, () =>
+  console.log(`Server listen to port ${PORT}`)
+);

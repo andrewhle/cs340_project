@@ -9,21 +9,21 @@ function AddCourse({ handleAddCourse }) {
     courseCredit: "",
   });
 
-  const handleChange = (event) => {
-    setFormData((prevState) => ({
+  const handleChange = event => {
+    setFormData(prevState => ({
       ...prevState,
       //object format => [key]: value
       [event.target.name]: event.target.value,
     }));
   };
 
-  const insertCourse = async (event) => {
+  const insertCourse = async event => {
     event.preventDefault();
     //formData is an object
     const newCourse = formData;
 
     try {
-      const response = await fetch("http://localhost:3000/course", {
+      const response = await fetch("/course", {
         method: "POST",
         headers: {
           Accept: "application/json",

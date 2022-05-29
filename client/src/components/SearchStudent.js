@@ -8,7 +8,9 @@ function SearchStudent() {
         <input type="text" placeholder="Enter Student Id"></input>
         <input type="text" placeholder="Enter First Name"></input>
         <input type="text" placeholder="Enter Last Name"></input>
-        <button>Add</button>
+        <input type="text" placeholder="Enter Email"></input>
+        <input type="text" placeholder="Enter Date Of Birth"></input>
+        <button>Search</button>
       </form>
     </div>
   );
