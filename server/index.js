@@ -3,15 +3,16 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 const PORT = 3000;
 
 //--------------------------DATA BASE CONNECTION------------------------------
 
 const pool = mysql.createConnection({
-  host: "classmysql.engr.oregonstate.edu",
-  user: "cs340_lehung",
-  password: "933956527",
-  database: "cs340_lehung",
+  host: `${process.env.HOST}`,
+  user: `${process.env.USER}`,
+  password: `${process.env.PASSWORD}`,
+  database: `${process.env.DATABASE}`,
 });
 
 pool.connect(err => {
