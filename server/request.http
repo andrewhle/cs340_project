@@ -23,3 +23,8 @@ Content-Type: application/json
     "email": "testing@example.com",
     "dateOfBirth": "2001-09-20"
 }
+
+###
+
+
+DELETE http://localhost:3000/course/12 HTTP/1.1

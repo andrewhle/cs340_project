@@ -4,3 +4,11 @@ nvm install NEW_VERSION
 lehung@flipN.engr.oregonstate.edu
 //to access certain flip# 
 
+change start script in package.json to 
+"start": "pm2-runtime start ecosystem.config.js --env production",
+
+
+HOST = classmysql.oregonstate.edu
+USER = cs340_lehung
+PASSWORD = 933956527    
+DATABASE = cs340_lehung

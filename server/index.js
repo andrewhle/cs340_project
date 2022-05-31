@@ -64,7 +64,23 @@ app.get("/course", (req, res) => {
   });
 });
 
-app.delete("/course/:course_id", (req, res) => {});
+app.delete("/course/:course_id", (req, res) => {
+  const course_id = req.params.course_id;
+  console.log(course_id);
+
+  const sql = `DELETE FROM course WHERE course_id = ${course_id}`;
+
+  pool.query(sql, (err, result) => {
+    if (!err) {
+      res.json({
+        Success: true,
+        message: `Number of rows delete = ${result.affectedRows}`,
+      });
+    } else {
+      res.send({ Success: false, message: "Failed to retrieve course" });
+    }
+  });
+});
 
 //------------------------------STUDENT---------------------------------
 
