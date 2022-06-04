@@ -22,8 +22,9 @@ function Major() {
         <thead>
           <tr>
             <th>Major id</th>
-            <th>Department id (FK)</th>
+            <th>Department id</th>
             <th>Major Name</th>
+            <th>Major credit req</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -31,6 +32,7 @@ function Major() {
         <tbody>
           {major.map(major => (
             <tr key={major.major_id}>
+              <td>{major.major_id}</td>
               <td>{major.dept_id}</td>
               <td>{major.major_name}</td>
               <td>{major.credit_req}</td>

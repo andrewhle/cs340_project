@@ -24,7 +24,42 @@ Content-Type: application/json
     "dateOfBirth": "2001-09-20"
 }
 
-###
+### Delete course
+DELETE http://localhost:3000/course/13 HTTP/1.1
 
+### Delete student 
 
-DELETE http://localhost:3000/course/12 HTTP/1.1
+DELETE http://localhost:3000/student/26 HTTP/1.1
+
+### Update course
+PUT http://localhost:3000/course/4 HTTP/1.1
+content-type: application/json
+
+{
+    "courseName": "Update Test",
+    "courseCredit": 5
+}
+
+###------------------------------MAJOR----------------
+
+POST http://localhost:3000/major HTTP/1.1
+Content-Type: application/json
+
+{
+    "deptId": 1,
+    "majorName": "Add Testing",
+    "creditReq": 100
+}
+
+### Delete major
+DELETE http://localhost:3000/major/13 HTTP/1.1
+
+### Update major
+PUT http://localhost:3000/major/14 HTTP/1.1
+content-type: application/json
+
+{
+    "dept_id": 1,
+    "major_name": "Update Testing",
+    "credit_req": 170
+}
