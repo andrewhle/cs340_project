@@ -3,6 +3,13 @@
 ### NOTE: replace end point with department, course, student, major, teacher
 GET http://localhost:3000/course
 
+### Retrieve Course by filter
+GET http://localhost:3000/course?course_id=1&course_name=&course_credit=
+
+
+### -----------------------------------------STUDENT--------------
+GET http://localhost:3000/student?student_id=&first_name=Mathew&last_name=
+
 ### Posting Data
 POST http://localhost:3000/course HTTP/1.1
 Content-Type: application/json
@@ -51,6 +58,9 @@ Content-Type: application/json
     "creditReq": 100
 }
 
+### Retrieve Department by filter
+GET http://localhost:3000/major?major_id=&major_name=&credit_req=
+
 ### Delete major
 DELETE http://localhost:3000/major/13 HTTP/1.1
 
@@ -62,4 +72,66 @@ content-type: application/json
     "dept_id": 1,
     "major_name": "Update Testing",
     "credit_req": 170
+}
+
+###---------------------------------Teacher-------------------
+POST http://localhost:3000/teacher HTTP/1.1
+Content-Type: application/json
+
+{
+    "deptId": 7,
+    "firstName": "Add Testing",
+    "lastName": "Add Tesing",
+    "dateOfBirth": "2001-09-20",
+    "phoneNumber": "(472) 899-2192"
+}
+
+### Retrieve Teacher by filter
+GET http://localhost:3000/teacher?teacher_id=12&first_name=Joel&last_name=
+
+### Update teacher
+PUT http://localhost:3000/teacher/12 HTTP/1.1
+content-type: application/json
+
+{
+    "dept_id": 7,
+    "first_name": "Update Testing",
+    "last_name": "Update Tesing",
+    "date_of_birth": "2001-09-20",
+    "phone_number": "(472) 899-2192"
+}
+
+
+### Delete teacher
+DELETE http://localhost:3000/teacher/8 HTTP/1.1
+
+###---------------------------------Department-------------------
+
+
+POST http://localhost:3000/department HTTP/1.1
+Content-Type: application/json
+
+{
+    "deptName": "Add Testing",
+    "location": "Testing Location",
+    "campus": "Tesing Campus"
+
+}
+
+### Retrieve Department by filter
+GET http://localhost:3000/department?dept_id=&dept_name=&location=&campus=Aria
+
+### Delete Department
+
+DELETE http://localhost:3000/department/12 HTTP/1.1
+
+### Update Department
+
+PUT http://localhost:3000/department/11 HTTP/1.1
+content-type: application/json
+
+{
+    "dept_name": "Update test",
+    "location": "Update Location",
+    "campus": "Update campus"
 }

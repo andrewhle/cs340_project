@@ -1,13 +1,14 @@
 import React from "react";
-import FilterCourse from "./FilterCourse";
+import FilterDepartment from "./FilterDepartment";
 
-function SearchCourse() {
+const SearchDepartment = () => {
   const [isShow, setShow] = React.useReducer(state => !state, false);
   //Whenever we set a new value in the form, it will be store in value
   const [value, setValue] = React.useState({
-    course_id: "",
-    course_name: "",
-    course_credit: "",
+    dept_id: "",
+    dept_name: "",
+    location: "",
+    campus: "",
   });
 
   const [data, setData] = React.useState([]);
@@ -18,7 +19,7 @@ function SearchCourse() {
     const urlParams = new URLSearchParams(value);
     try {
       const response = await fetch(
-        `https://gravityfalluniversity.herokuapp.com/course?${urlParams.toString()}`,
+        `https://gravityfalluniversity.herokuapp.com/department?${urlParams.toString()}`,
         {
           method: "GET",
         }
@@ -43,34 +44,41 @@ function SearchCourse() {
   }
   return (
     <div className="block-2">
-      <h4>Search Course</h4>
+      <h4>Search Department</h4>
       <form onSubmit={handleClick}>
         <input
           type="text"
-          name="course_id"
-          placeholder="Enter Course Id"
+          name="dept_id"
+          placeholder="Enter Department Id"
           onChange={handleChange}
-          value={value.course_id}
+          value={value.dept_id}
         ></input>
         <input
           type="text"
-          name="course_name"
-          placeholder="Enter Course Name"
+          name="dept_name"
+          placeholder="Enter Department Name"
           onChange={handleChange}
-          value={value.course_name}
+          value={value.dept_name}
         ></input>
         <input
-          type="number"
-          name="course_credit"
-          placeholder="Enter Course Credit"
+          type="text"
+          name="location"
+          placeholder="Enter Department Location"
           onChange={handleChange}
-          value={value.course_credit}
+          value={value.location}
+        ></input>
+        <input
+          type="text"
+          name="campus"
+          placeholder="Enter Department Campus"
+          onChange={handleChange}
+          value={value.campus}
         ></input>
         <button type="submit">Search</button>
       </form>
-      {isShow ? <FilterCourse data={data} onClose={setShow} /> : null}
+      {isShow ? <FilterDepartment data={data} onClose={setShow} /> : null}
     </div>
   );
-}
+};
 
-export default SearchCourse;
+export default SearchDepartment;

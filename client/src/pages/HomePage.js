@@ -7,14 +7,14 @@ function HomePage() {
       <h4>Introduction </h4>
       <p>
         {" "}
-        I guess we could discuss the implications of the phrase "meant to be."
-        That is if we wanted to drown ourselves in a sea of backwardly
-        referential semantics and other mumbo-jumbo. Maybe such a discussion
-        would result in the determination that "meant to be" is exactly as
-        meaningless a phrase as it seems to be, and that none of us is actually
-        meant to be doing anything at all. But that's my existential underpants
-        underpinnings showing. It's the way the cookie crumbles. And now I want
-        a cookie.
+        We will create a data management system for the University of Gravity
+        Falls website back-end. This university has a capacity of about 1000
+        students and about 100 teachers. This database aims to utilize the
+        resource, storing data and data security. For example, the admission
+        office can add more students to the university as acceptance, students
+        could look up their courses, teachers could keep a graded record of
+        students, and non-student could not randomly access university
+        information.
       </p>
     </div>
   );

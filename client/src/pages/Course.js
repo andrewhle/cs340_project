@@ -8,21 +8,24 @@ function Course() {
   const [course, setCourse] = useState([]);
 
   const loadCourse = function () {
-    fetch(`/course`)
+    fetch(`https://gravityfalluniversity.herokuapp.com/course`)
       .then(res => res.json())
       .then(data => setCourse(data));
   };
 
   const handleAddCourse = course => {
     //read up about concat() in JS
-    //concar merge 2 array together and return a new array contain both array
+    //concat merge 2 array together and return a new array contain both array
     setCourse(prevState => prevState.concat(course));
   };
 
   const handleDelete = async id => {
     // call delete api
     try {
-      const response = await fetch(`/course/${id}`, { method: "DELETE" });
+      const response = await fetch(
+        `https://gravityfalluniversity.herokuapp.com/course/${id}`,
+        { method: "DELETE" }
+      );
       // if the request is successful, set course array that doesn't contain deleted course
       if (response.status === 200) {
         setCourse(prevState =>
@@ -40,14 +43,17 @@ function Course() {
   const handleEdit = async newCourse => {
     // if the request is successful, replace the old course in array with new course.
     try {
-      const response = await fetch(`/course/${newCourse.course_id}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newCourse),
-      });
+      const response = await fetch(
+        `https://gravityfalluniversity.herokuapp.com/course/${newCourse.course_id}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newCourse),
+        }
+      );
       if (response.status === 200) {
         setCourse(prevState => {
           const oldCourse = [...prevState]; //assign every old value to a variable

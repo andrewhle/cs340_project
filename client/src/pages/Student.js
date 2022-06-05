@@ -8,7 +8,7 @@ function Student() {
   const [student, setStudent] = useState([]);
 
   const loadStudent = function () {
-    fetch(`/student`)
+    fetch(`https://gravityfalluniversity.herokuapp.com/student`)
       .then(res => res.json())
       .then(data => setStudent(data));
   };
@@ -21,7 +21,10 @@ function Student() {
 
   const handleDelete = async id => {
     try {
-      const response = await fetch(`/student/${id}`, { method: "DELETE" });
+      const response = await fetch(
+        `https://gravityfalluniversity.herokuapp.com/student/${id}`,
+        { method: "DELETE" }
+      );
       // if the request is successful, set course array that doesn't contain deleted course
       if (response.status === 200) {
         setStudent(prevState =>
@@ -38,14 +41,17 @@ function Student() {
 
   const handleEdit = async newStudent => {
     try {
-      const response = await fetch(`/student/${newStudent.student_id}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newStudent),
-      });
+      const response = await fetch(
+        `https://gravityfalluniversity.herokuapp.com/student/${newStudent.student_id}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newStudent),
+        }
+      );
       if (response.status === 200) {
         setStudent(prevState => {
           const oldStudent = [...prevState]; //assign every old value to a variable

@@ -1,12 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function AddCourse({ handleAddCourse }) {
-  //formData is an object with propeties being deptId, courseName, courseCredit
-  //const formData = {deptId: '', courseName: "", courseCredit: "",}
+const AddDepartment = ({ handleAddDepartment }) => {
   const [formData, setFormData] = useState({
-    courseName: "",
-    courseCredit: "",
+    deptName: "",
+    location: "",
+    campus: "",
   });
 
   const handleChange = event => {
@@ -17,26 +16,26 @@ function AddCourse({ handleAddCourse }) {
     }));
   };
 
-  const insertCourse = async event => {
+  const insertDepartment = async event => {
     event.preventDefault();
     //formData is an object
-    const newCourse = formData;
+    const newDepartment = formData;
 
     try {
       const response = await fetch(
-        "https://gravityfalluniversity.herokuapp.com/course",
+        "https://gravityfalluniversity.herokuapp.com/department",
         {
           method: "POST",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(newCourse),
+          body: JSON.stringify(newDepartment),
         }
       );
       if (response.status === 201) {
-        alert("Successfully added course");
-        handleAddCourse(await response.json());
+        alert("Successfully added department");
+        handleAddDepartment(await response.json());
         //console.log(await response.json());
       }
     } catch (err) {
@@ -46,26 +45,33 @@ function AddCourse({ handleAddCourse }) {
 
   return (
     <div className="block-1">
-      <h4>Adding Course</h4>
-      <form onSubmit={insertCourse}>
+      <h4>Adding Department</h4>
+      <form onSubmit={insertDepartment}>
         <input
           type="text"
-          placeholder="Enter Course Name"
-          name="courseName"
-          value={formData.courseName}
+          placeholder="Enter Department Name"
+          name="deptName"
+          value={formData.deptName}
           onChange={handleChange}
         ></input>
         <input
-          type="number"
-          name="courseCredit"
-          placeholder="Enter Course Credit"
-          value={formData.courseCredit}
+          type="text"
+          placeholder="Enter Department Location"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+        ></input>
+        <input
+          type="text"
+          placeholder="Enter Department Campus"
+          name="campus"
+          value={formData.campus}
           onChange={handleChange}
         ></input>
         <button type="submit">Add</button>
       </form>
     </div>
   );
-}
+};
 
-export default AddCourse;
+export default AddDepartment;

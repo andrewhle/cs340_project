@@ -1,7 +1,7 @@
 import React from "react";
 
-const EditCourseForm = ({ course, onClose, handleEdit }) => {
-  const [value, setValue] = React.useState(course);
+const EditMajorForm = ({ major, onClose, handleEdit }) => {
+  const [value, setValue] = React.useState(major);
 
   const handleChange = event => {
     setValue(prevState => ({
@@ -27,41 +27,53 @@ const EditCourseForm = ({ course, onClose, handleEdit }) => {
         </button>
         <form className="edit-form" onSubmit={handleSubmit}>
           <div style={{ display: "flex", gap: 16 }}>
-            <div className="edit-input-group">
-              <label className="edit-label" htmlFor="course_id">
-                Course Id
+            <div>
+              <label className="edit-label" htmlFor="major_id">
+                Major Id
               </label>
               <input
                 className="edit-input"
                 onChange={handleChange}
-                name="course_id"
+                name="major_id"
                 type="text"
-                value={value.course_id}
+                value={value.major_id}
                 readOnly
               />
             </div>
-            <div className="edit-input-group">
-              <label className="edit-label" htmlFor="course_name">
-                Course Name
+            <div>
+              <label className="edit-label" htmlFor="dept_id">
+                Department Id
               </label>
               <input
                 className="edit-input"
                 onChange={handleChange}
-                name="course_name"
+                name="dept_id"
                 type="text"
-                value={value.course_name}
+                value={value.dept_id}
               />
             </div>
-            <div className="edit-input-group">
-              <label className="edit-label" htmlFor="course_credit">
-                Course Credit
+            <div>
+              <label className="edit-label" htmlFor="major_name">
+                Major Name
               </label>
               <input
                 className="edit-input"
                 onChange={handleChange}
-                name="course_credit"
+                name="major_name"
                 type="text"
-                value={value.course_credit}
+                value={value.major_name}
+              />
+            </div>
+            <div>
+              <label className="edit-label" htmlFor="credit_req">
+                Credit Requirement
+              </label>
+              <input
+                className="edit-input"
+                onChange={handleChange}
+                name="credit_req"
+                type="text"
+                value={value.credit_req}
               />
             </div>
           </div>
@@ -72,4 +84,4 @@ const EditCourseForm = ({ course, onClose, handleEdit }) => {
   );
 };
 
-export default EditCourseForm;
+export default EditMajorForm;

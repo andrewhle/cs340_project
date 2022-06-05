@@ -1,55 +1,108 @@
 import React from "react";
-import { MdDelete } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
+import { useState, useEffect } from "react";
+import AddTeacher from "../components/AddTeacher";
+import SearchTeacher from "../components/SearchTeacher";
+import TeacherItem from "./TeacherItem";
 
 function Teacher() {
+  const [teacher, setTeacher] = useState([]);
+
+  const handleAddTeacher = teacher => {
+    //read up about concat() in JS
+    //concat merge 2 array together and return a new array contain both array
+    setTeacher(prevState => prevState.concat(teacher));
+  };
+
+  const loadTeacher = function () {
+    fetch(`https://gravityfalluniversity.herokuapp.com/teacher`)
+      .then(res => res.json())
+      .then(data => setTeacher(data));
+  };
+
+  const handleDelete = async id => {
+    try {
+      const response = await fetch(
+        `https://gravityfalluniversity.herokuapp.com/teacher/${id}`,
+        { method: "DELETE" }
+      );
+      // if the request is successful, set course array that doesn't contain deleted course
+      if (response.status === 200) {
+        setTeacher(prevState =>
+          prevState.filter(teacher => teacher.teacher_id !== id)
+        );
+      }
+    } catch (err) {
+      console.error({
+        Success: false,
+        Error: `Failed to delete teacher by id ${id}`,
+      });
+    }
+  };
+
+  const handleEdit = async newTeacher => {
+    try {
+      const response = await fetch(
+        `https://gravityfalluniversity.herokuapp.com/teacher/${newTeacher.teacher_id}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTeacher),
+        }
+      );
+      if (response.status === 200) {
+        setTeacher(prevState => {
+          const oldTeacher = [...prevState]; //assign every old value to a variable
+          const teacherIdx = oldTeacher.findIndex(
+            teacher => teacher.teacher_id === newTeacher.teacher_id
+          ); //locate the update course by id and return the index of course object
+          console.log(teacherIdx);
+          oldTeacher[teacherIdx] = newTeacher;
+          return oldTeacher;
+        });
+      }
+    } catch (err) {
+      console.error({
+        Success: false,
+        Error: `Failed to update teacher by id ${newTeacher.teacher_id}`,
+      });
+    }
+  };
+
+  useEffect(() => loadTeacher(), []);
   return (
     <div>
       <h2>Teacher Page</h2>
       <table>
         <thead>
           <tr>
-            <th>Employee id</th>
-            <th>Department id (FK)</th>
-            <th>Teacher Name</th>
+            <th>Teacher id</th>
+            <th>Department id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date Of Birth</th>
+            <th>Phone Number</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Data</td>
-            <td>Data2</td>
-            <td>Data3</td>
-            <td>
-              <MdEdit />
-            </td>
-            <td>
-              <MdDelete />
-            </td>
-          </tr>
+          {teacher.map(teacher => (
+            <TeacherItem
+              key={teacher.teacher_id}
+              teacher={teacher}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
+          ))}
         </tbody>
       </table>
 
       <div className="block-container">
-        <div className="block-1">
-          <h4>Adding Teacher</h4>
-          <form>
-            <input type="text" placeholder="Enter Employee Id"></input>
-            <input type="text" placeholder="Enter Department Id"></input>
-            <input type="text" placeholder="Enter Teacher Name"></input>
-            <button>Add</button>
-          </form>
-        </div>
-        <div className="block-2">
-          <h4>Search Teacher</h4>
-          <form>
-            <input type="text" placeholder="Enter Employee Id"></input>
-            <input type="text" placeholder="Enter Department Id"></input>
-            <input type="text" placeholder="Enter Teacher Name"></input>
-            <button>Search</button>
-          </form>
-        </div>
+        <AddTeacher handleAddTeacher={handleAddTeacher} />
+        <SearchTeacher />
       </div>
     </div>
   );

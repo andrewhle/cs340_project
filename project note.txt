@@ -5,10 +5,18 @@ lehung@flipN.engr.oregonstate.edu
 //to access certain flip# 
 
 change start script in package.json to 
+"start": "nodemon index.js",
 "start": "pm2-runtime start ecosystem.config.js --env production",
 
+"start": "pm2 delete all"
 
-HOST = classmysql.oregonstate.edu
+
+HOST = classmysql.engr.oregonstate.edu
 USER = cs340_lehung
-PASSWORD = 933956527    
+PASSWORD = 933956527
 DATABASE = cs340_lehung
+
+HOST = us-cdbr-east-05.cleardb.net
+USER = b8e08fe6a045a3
+PASSWORD = 8982e7bb    
+DATABASE = heroku_2a344c295e714f0

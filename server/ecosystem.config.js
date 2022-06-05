@@ -1,7 +1,8 @@
+//this is the production file running on PM2
 module.exports = {
   apps: [
     {
-      name: "app",
+      name: "index",
       script: "./index.js",
       instances: "max",
       env: {
