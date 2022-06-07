@@ -1,7 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { MdDelete } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
 import AddMajor from "../components/AddMajor";
 import SearchMajor from "../components/SearchMajor";
 import MajorItem from "./MajorItem";

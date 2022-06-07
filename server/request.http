@@ -47,6 +47,34 @@ content-type: application/json
     "courseCredit": 5
 }
 
+
+### --------------------------------------------- course_student-----------------------
+GET http://localhost:3000/course_student?course_id=&student_id=
+
+
+### POST course_student
+POST http://localhost:3000/course_student HTTP/1.1
+Content-Type: application/json
+
+{
+    "course_id": 34,
+    "student_id": 24
+
+}
+
+### Delete course_student
+DELETE http://localhost:3000/course_student/24 HTTP/1.1
+
+### Update course_student
+PUT http://localhost:3000/course_student/64 HTTP/1.1
+content-type: application/json
+
+{
+    "course_id": 24,
+    "student_id": 24
+}
+
+
 ###------------------------------MAJOR----------------
 
 POST http://localhost:3000/major HTTP/1.1

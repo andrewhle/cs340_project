@@ -54,7 +54,7 @@ app.post("/course", (req, res) => {
 });
 
 app.get("/course", (req, res) => {
-  // (Object.keys(req.query) => ['course_id', 'course_name', 'course_credit'].every(key => req.query[key]  )
+  //if request query is empty, return the whole table
   if (Object.keys(req.query).every(key => req.query[key] === "")) {
     const sql = "SELECT * FROM course;";
     pool.query(sql, (err, result) => {
@@ -206,12 +206,80 @@ app.delete("/student/:student_id", (req, res) => {
 
 //----------------------------COURSE_STUDENT-------------------------
 
-app.get("/course_student", (req, res) => {
-  pool.query("SELECT * FROM course_student;", (err, rows, field) => {
+app.post("/course_student", (req, res) => {
+  const course_id = req.body.course_id;
+  const student_id = req.body.student_id;
+
+  const sql = `INSERT INTO course_student (course_id, student_id) values (${course_id}, ${student_id});`;
+  pool.query(sql, (err, result) => {
     if (!err) {
-      res.send(JSON.stringify(rows));
+      res.status(201).json({
+        course_student_id: result.insertId,
+        course_id,
+        student_id,
+      });
     } else {
-      console.log(err);
+      res.send({
+        Success: false,
+        message: "Failed to create course_student request",
+      });
+    }
+  });
+});
+
+app.get("/course_student", (req, res) => {
+  if (Object.keys(req.query).every(key => req.query[key] === "")) {
+    pool.query("SELECT * FROM course_student;", (err, rows, field) => {
+      if (!err) {
+        res.send(JSON.stringify(rows));
+      } else {
+        console.log(err);
+      }
+    });
+  } else {
+    const sql = `SELECT * FROM course_student WHERE course_student_id = "${req.query.course_student_id}" OR course_id = "${req.query.course_id}" OR student_id = "${req.query.student_id}";`;
+    pool.query(sql, (err, result) => {
+      if (!err) {
+        res.json(result);
+      } else {
+        res.send({ Success: false, message: "Failed to retrieve student" });
+      }
+    });
+  }
+});
+
+app.put("/course_student/:course_student_id", (req, res) => {
+  const course_student_id = req.params.course_student_id;
+  const course_id = req.body.course_id;
+  const student_id = req.body.student_id;
+
+  const sql = `UPDATE course_student SET course_id = "${course_id}", student_id = "${student_id}" WHERE course_student_id = ${course_student_id}; `;
+
+  pool.query(sql, (err, result) => {
+    if (!err) {
+      res.json({
+        Success: true,
+        message: `Number of rows updated = ${result.affectedRows}`,
+      });
+    } else {
+      res.send({ Success: false, message: "Failed to update course_student" });
+    }
+  });
+});
+
+app.delete("/course_student/:course_student_id", (req, res) => {
+  const course_student_id = req.params.course_student_id;
+
+  const sql = `DELETE FROM course_student WHERE course_student_id = ${course_student_id}`;
+
+  pool.query(sql, (err, result) => {
+    if (!err) {
+      res.status(200).json({
+        Success: true,
+        message: `Number of rows delete = ${result.affectedRows}`,
+      });
+    } else {
+      res.send({ Success: false, message: "Failed to delete course_student" });
     }
   });
 });
